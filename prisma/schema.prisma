@@ -12,7 +12,7 @@ enum Role {
   ADMIN
 }
 
-// 2. Notice Categories for College Noticeboard
+// 2. Notice Categories
 enum NoticeCategory {
   GENERAL
   ACADEMIC
@@ -33,7 +33,7 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  // Relation: One User can create Many Notices
+  // Relation: User -> Notices
   notices Notice[]
 
   @@index([email])
@@ -56,11 +56,63 @@ model Notice {
   createdAt   DateTime       @default(now()) @map("created_at")
   updatedAt   DateTime       @updatedAt @map("updated_at")
 
-  // Relation: Notice belongs to an Author (User)
   author User @relation(fields: [authorId], references: [id])
 
   @@index([category])
   @@index([isFeatured])
   @@index([isDeleted])
   @@map("notices")
+}
+
+// 5. Teacher / Faculty Model
+model Teacher {
+  id            String   @id @default(uuid())
+  name          String
+  designation   String
+  department    String
+  qualification String
+  email         String?
+  phone         String?
+  photoUrl      String?  @map("photo_url")
+  bio           String?  @db.Text
+  orderIndex    Int      @default(0) @map("order_index")
+  isDeleted     Boolean  @default(false) @map("is_deleted")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@index([department])
+  @@index([isDeleted])
+  @@map("teachers")
+}
+
+// 6. Gallery / Moments Model (Best Photos)
+model GalleryItem {
+  id         String   @id @default(uuid())
+  title      String
+  imageUrl   String   @map("image_url")
+  caption    String?
+  category   String?
+  isFeatured Boolean  @default(false) @map("is_featured")
+  isDeleted  Boolean  @default(false) @map("is_deleted")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@index([isFeatured])
+  @@index([isDeleted])
+  @@map("gallery_items")
+}
+
+// 7. College Stats Model
+model CollegeStat {
+  id         String   @id @default(uuid())
+  label      String
+  value      String
+  icon       String?
+  orderIndex Int      @default(0) @map("order_index")
+  isDeleted  Boolean  @default(false) @map("is_deleted")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@index([isDeleted])
+  @@map("college_stats")
 }
