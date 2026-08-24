@@ -6,13 +6,22 @@ datasource db {
   provider = "postgresql"
 }
 
-// User roles in system
+// 1. User Roles
 enum Role {
   SUPER_ADMIN
   ADMIN
 }
 
-// User model for Admin authentication & management
+// 2. Notice Categories for College Noticeboard
+enum NoticeCategory {
+  GENERAL
+  ACADEMIC
+  ADMISSION
+  EXAM
+  EVENT
+}
+
+// 3. User Model
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
@@ -24,9 +33,34 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  // Indexes for fast lookup
+  // Relation: One User can create Many Notices
+  notices Notice[]
+
   @@index([email])
   @@index([role])
-  // Map Prisma model 'User' to Postgres table 'users'
   @@map("users")
+}
+
+// 4. Notice Model
+model Notice {
+  id          String         @id @default(uuid())
+  title       String
+  slug        String         @unique
+  content     String         @db.Text
+  category    NoticeCategory @default(GENERAL)
+  attachment  String?
+  isFeatured  Boolean        @default(false) @map("is_featured")
+  isDeleted   Boolean        @default(false) @map("is_deleted")
+  publishedAt DateTime       @default(now()) @map("published_at")
+  authorId    String         @map("author_id")
+  createdAt   DateTime       @default(now()) @map("created_at")
+  updatedAt   DateTime       @updatedAt @map("updated_at")
+
+  // Relation: Notice belongs to an Author (User)
+  author User @relation(fields: [authorId], references: [id])
+
+  @@index([category])
+  @@index([isFeatured])
+  @@index([isDeleted])
+  @@map("notices")
 }
