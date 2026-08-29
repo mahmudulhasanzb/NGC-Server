@@ -104,15 +104,77 @@ model GalleryItem {
 
 // 7. College Stats Model
 model CollegeStat {
-  id         String   @id @default(uuid())
-  label      String
-  value      String
-  icon       String?
-  orderIndex Int      @default(0) @map("order_index")
-  isDeleted  Boolean  @default(false) @map("is_deleted")
-  createdAt  DateTime @default(now()) @map("created_at")
-  updatedAt  DateTime @updatedAt @map("updated_at")
+  id          String   @id @default(uuid())
+  label       String
+  value       String
+  icon        String?
+  description String?
+  orderIndex  Int      @default(0) @map("order_index")
+  isDeleted   Boolean  @default(false) @map("is_deleted")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
 
   @@index([isDeleted])
   @@map("college_stats")
+}
+
+// 8. Better-Auth Compatible Models
+model BetterUser {
+  id            String          @id
+  name          String
+  email         String          @unique
+  emailVerified Boolean         @default(false)
+  image         String?
+  role          String?         @default("admin")
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  sessions      BetterSession[]
+  accounts      BetterAccount[]
+
+  @@map("user")
+}
+
+model BetterSession {
+  id        String     @id
+  expiresAt DateTime
+  token     String     @unique
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      BetterUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@map("session")
+}
+
+model BetterAccount {
+  id                    String     @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  BetterUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  issuer                String?
+  createdAt             DateTime   @default(now())
+  updatedAt             DateTime   @updatedAt
+
+  @@map("account")
+}
+
+model BetterVerification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("verification")
 }

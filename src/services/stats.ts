@@ -7,7 +7,7 @@ const router = Router();
 // 1. CREATE College Stat
 router.post("/", async (req, res) => {
   try {
-    const { label, value, icon, orderIndex } = req.body;
+    const { label, value, icon, description, orderIndex } = req.body;
 
     if (!label || !value) {
       return sendResponse(res, 400, false, "Label and value are required");
@@ -18,6 +18,7 @@ router.post("/", async (req, res) => {
         label,
         value,
         icon: icon || null,
+        description: description || null,
         orderIndex: Number(orderIndex) || 0,
       },
     });
@@ -69,7 +70,7 @@ router.get("/:id", async (req, res) => {
 router.patch("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { label, value, icon, orderIndex } = req.body;
+    const { label, value, icon, description, orderIndex } = req.body;
 
     const statExists = await prisma.collegeStat.findFirst({
       where: { id, isDeleted: false },
@@ -85,6 +86,7 @@ router.patch("/:id", async (req, res) => {
         ...(label && { label }),
         ...(value && { value }),
         ...(icon !== undefined && { icon }),
+        ...(description !== undefined && { description }),
         ...(orderIndex !== undefined && { orderIndex: Number(orderIndex) }),
       },
     });
