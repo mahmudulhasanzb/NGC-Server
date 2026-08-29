@@ -69,6 +69,97 @@ const initialNotices = [
   },
 ];
 
+const initialTeachers = [
+  {
+    name: 'Prof. Md. Safiqul Islam',
+    designation: 'Principal & Professor of Economics',
+    department: 'Economics',
+    qualification: 'M.Sc (Econ, DU) • 14th BCS (General Education)',
+    email: 'principal@ngc.edu.bd',
+    phone: '+880 1711-000001',
+    photoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=400&q=80',
+    bio: 'Distinguished educator with over 28 years of academic leadership in government colleges across Sylhet division.',
+    orderIndex: 1,
+  },
+  {
+    name: 'Nazmun Nahar',
+    designation: 'Associate Professor & Head of Bangla',
+    department: 'Bangla',
+    qualification: 'M.A in Bangla (DU) • 21st BCS (General Education)',
+    email: 'nazmun.nahar@ngc.edu.bd',
+    phone: '+880 1711-000002',
+    photoUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80',
+    bio: 'Dedicated scholar of Bengali literature and cultural coordinator for Nabiganj Government College.',
+    orderIndex: 2,
+  },
+  {
+    name: 'Mohammad Kabir Hossain',
+    designation: 'Assistant Professor of English',
+    department: 'English',
+    qualification: 'M.A in English (CU) • 28th BCS (General Education)',
+    email: 'kabir.hossain@ngc.edu.bd',
+    phone: '+880 1711-000003',
+    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80',
+    bio: 'Passionate ELT specialist guiding students in communicative English and literature appreciation.',
+    orderIndex: 3,
+  },
+  {
+    name: 'Dr. Farhana Akter',
+    designation: 'Assistant Professor of Chemistry',
+    department: 'Chemistry',
+    qualification: 'Ph.D & M.Sc (SUST) • 31st BCS (General Education)',
+    email: 'farhana.chem@ngc.edu.bd',
+    phone: '+880 1711-000004',
+    photoUrl: 'https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=400&h=400&q=80',
+    bio: 'Active researcher with multiple publications in environmental and organic chemistry.',
+    orderIndex: 4,
+  },
+  {
+    name: 'Md. Tariqul Islam',
+    designation: 'Lecturer in Physics',
+    department: 'Physics',
+    qualification: 'M.Sc in Applied Physics (DU) • 36th BCS (General Education)',
+    email: 'tariqul.phys@ngc.edu.bd',
+    phone: '+880 1711-000005',
+    photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&h=400&q=80',
+    bio: 'Head of Physics Laboratory supervising experimental mechanics and modern optics.',
+    orderIndex: 5,
+  },
+  {
+    name: 'Abu Sayed Chowdhury',
+    designation: 'Lecturer in Mathematics',
+    department: 'Mathematics',
+    qualification: 'M.Sc in Applied Mathematics (RU) • 37th BCS',
+    email: 'sayed.math@ngc.edu.bd',
+    phone: '+880 1711-000006',
+    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&h=400&q=80',
+    bio: 'Inspiring mathematics instructor focused on analytical calculus and algebra mastery.',
+    orderIndex: 6,
+  },
+  {
+    name: 'Md. Enamul Haque',
+    designation: 'Assistant Professor of Accounting',
+    department: 'Business Studies',
+    qualification: 'M.Com in Accounting (CU) • 30th BCS',
+    email: 'enamul.acc@ngc.edu.bd',
+    phone: '+880 1711-000007',
+    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=400&q=80',
+    bio: 'Senior faculty in Business Studies preparing students for corporate finance and commercial accounting.',
+    orderIndex: 7,
+  },
+  {
+    name: 'Tanjim Ahmed',
+    designation: 'Lecturer in ICT',
+    department: 'ICT & Computer Science',
+    qualification: 'B.Sc & M.Sc in CSE (SUST) • 38th BCS',
+    email: 'tanjim.ict@ngc.edu.bd',
+    phone: '+880 1711-000008',
+    photoUrl: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&h=400&q=80',
+    bio: 'Chief IT advisor managing college computer lab network and digital literacy programs.',
+    orderIndex: 8,
+  },
+];
+
 async function main() {
   console.log('Synchronizing initial Data into PostgreSQL...');
 
@@ -112,10 +203,10 @@ async function main() {
     }
   }
 
-  // 3. Sync Notices
+  // 3. Sync Notices (Check by unique slug)
   for (const n of initialNotices) {
-    const existingNotice = await prisma.notice.findFirst({
-      where: { slug: n.slug, isDeleted: false },
+    const existingNotice = await prisma.notice.findUnique({
+      where: { slug: n.slug },
     });
 
     if (!existingNotice) {
@@ -130,6 +221,35 @@ async function main() {
         },
       });
       console.log(`+ Created notice: ${n.title}`);
+    }
+  }
+
+  // 4. Sync Teachers
+  for (const t of initialTeachers) {
+    const existingTeacher = await prisma.teacher.findFirst({
+      where: { name: t.name, isDeleted: false },
+    });
+
+    if (!existingTeacher) {
+      await prisma.teacher.create({
+        data: t,
+      });
+      console.log(`+ Created faculty: ${t.name}`);
+    } else {
+      await prisma.teacher.update({
+        where: { id: existingTeacher.id },
+        data: {
+          designation: t.designation,
+          department: t.department,
+          qualification: t.qualification,
+          email: t.email,
+          phone: t.phone,
+          photoUrl: t.photoUrl,
+          bio: t.bio,
+          orderIndex: t.orderIndex,
+        },
+      });
+      console.log(`✓ Updated faculty: ${t.name}`);
     }
   }
 
