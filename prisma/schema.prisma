@@ -124,7 +124,29 @@ model CollegeStat {
   @@map("college_stats")
 }
 
-// 8. Better-Auth Compatible Models
+// 8. College About Model
+model CollegeAbout {
+  id              String   @id @default(uuid())
+  heading         String   @default("40+ Years of Academic Excellence in Nabiganj")
+  subheading      String   @default("Empowering generations through quality education, discipline, and integrity since 1984.")
+  description1    String   @db.Text
+  description2    String   @db.Text
+  videoEmbedUrl   String   @map("video_embed_url")
+  videoThumbnail  String?  @map("video_thumbnail")
+  missionText     String   @db.Text @map("mission_text")
+  visionText      String   @db.Text @map("vision_text")
+  valuesText      String   @db.Text @map("values_text")
+  establishedYear String   @default("1984") @map("established_year")
+  eiinNumber      String   @default("129524") @map("eiin_number")
+  collegeCode     String   @default("1301") @map("college_code")
+  nuCode          String   @default("1706") @map("nu_code")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("college_about")
+}
+
+// 9. Better-Auth Compatible Models
 model BetterUser {
   id            String          @id
   name          String
