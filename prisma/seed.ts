@@ -78,13 +78,12 @@ const initialTeachers = [
     presentAddress: 'College Quarter, Nabiganj Govt. College Campus, Nabiganj, Habiganj',
     permanentAddress: 'Vill: Shibpasha, Post: Nabiganj, Upazila: Nabiganj, Dist: Habiganj',
     mpoIndexNo: 'N406889',
-    joiningDate: '30 Jul, 1994',
+    joiningDate: '1994-07-30',
     experience: '30+ Years of Academic Administration & Teaching',
     interest: 'Macroeconomics, Educational Leadership, Academic Policy',
     phone: '+880 1711-000001',
     email: 'principal@ngc.edu.bd',
     photoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&h=600&q=80',
-    bio: 'Distinguished educator with over 30 years of academic leadership in government colleges across Sylhet division.',
     orderIndex: 1,
   },
   {
@@ -95,13 +94,12 @@ const initialTeachers = [
     presentAddress: 'Teacher Residential Area, Nabiganj, Habiganj',
     permanentAddress: 'Vill: Gujakhail, Post: Goplarbazar, Nabiganj, Habiganj',
     mpoIndexNo: 'N512304',
-    joiningDate: '15 Mar, 2001',
+    joiningDate: '2001-03-15',
     experience: '24 Years of Teaching & Literary Research',
     interest: 'Modern Bengali Literature, Folklore Studies, Cultural History',
     phone: '+880 1711-000002',
     email: 'nazmun.nahar@ngc.edu.bd',
     photoUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=600&q=80',
-    bio: 'Dedicated scholar of Bengali literature and cultural coordinator for Nabiganj Government College.',
     orderIndex: 2,
   },
   {
@@ -112,13 +110,12 @@ const initialTeachers = [
     presentAddress: 'Main Road, Nabiganj Sadar, Habiganj',
     permanentAddress: 'Vill: Kargaon, Post: Nabiganj, Upazila: Nabiganj, Dist: Habiganj',
     mpoIndexNo: 'N628491',
-    joiningDate: '12 Sep, 2008',
+    joiningDate: '2008-09-12',
     experience: '17 Years of Teaching & Applied Linguistics',
     interest: 'Romantic Poetry, Post-colonial Literature, Communicative English',
     phone: '+880 1711-000003',
     email: 'kabir.hossain@ngc.edu.bd',
     photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=600&q=80',
-    bio: 'Passionate ELT specialist guiding students in communicative English and literature appreciation.',
     orderIndex: 3,
   },
   {
@@ -129,13 +126,12 @@ const initialTeachers = [
     presentAddress: 'Hospital Road, Nabiganj, Habiganj',
     permanentAddress: 'Vill: Shibpasha, Post: Nabiganj, Dist: Habiganj',
     mpoIndexNo: 'N789230',
-    joiningDate: '18 Nov, 2017',
+    joiningDate: '2017-11-18',
     experience: '8 Years of Chemistry Teaching & Research',
     interest: 'Organic Synthesis, Environmental Chemistry, Laboratory Methods',
     phone: '+880 1711-000004',
     email: 'farhana.chem@ngc.edu.bd',
     photoUrl: 'https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=600&h=600&q=80',
-    bio: 'Active researcher with multiple publications in environmental and organic chemistry.',
     orderIndex: 4,
   },
   {
@@ -146,13 +142,12 @@ const initialTeachers = [
     presentAddress: 'College Staff Quarter, Nabiganj, Habiganj',
     permanentAddress: 'Vill: Bausi, Post: Nabiganj, Upazila: Nabiganj, Dist: Habiganj',
     mpoIndexNo: 'N674201',
-    joiningDate: '01 Jun, 2011',
+    joiningDate: '2011-06-01',
     experience: '14 Years in Classical & Modern Physics Instruction',
     interest: 'Optics, Solid State Physics, Laboratory Instrumentation',
     phone: '+880 1711-000005',
     email: 'tariqul.phys@ngc.edu.bd',
     photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&h=600&q=80',
-    bio: 'Head of Physics Laboratory supervising experimental mechanics and modern optics.',
     orderIndex: 5,
   },
   {
@@ -163,13 +158,12 @@ const initialTeachers = [
     presentAddress: 'College Road, Nabiganj, Habiganj',
     permanentAddress: 'Vill: Dinarpur, Post: Goplarbazar, Nabiganj, Habiganj',
     mpoIndexNo: 'N812340',
-    joiningDate: '04 Jan, 2019',
+    joiningDate: '2019-01-04',
     experience: '6 Years in Higher Secondary Mathematics',
     interest: 'Differential Calculus, Complex Analysis, Mathematical Modeling',
     phone: '+880 1711-000006',
     email: 'sayed.math@ngc.edu.bd',
     photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&h=600&q=80',
-    bio: 'Inspiring mathematics instructor focused on analytical calculus and algebra mastery.',
     orderIndex: 6,
   },
   {
@@ -180,13 +174,12 @@ const initialTeachers = [
     presentAddress: 'Station Road, Nabiganj, Habiganj',
     permanentAddress: 'Vill: Shibpasha, Post: Nabiganj, Dist: Habiganj',
     mpoIndexNo: 'N890123',
-    joiningDate: '15 Aug, 2021',
+    joiningDate: '2021-08-15',
     experience: '4 Years in Financial & Management Accounting',
     interest: 'Auditing, Corporate Taxation, International Financial Reporting',
     phone: '+880 1711-000007',
     email: 'enamul.acc@ngc.edu.bd',
     photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&h=600&q=80',
-    bio: 'Senior faculty in Business Studies preparing students for corporate finance and commercial accounting.',
     orderIndex: 7,
   },
   {
@@ -197,14 +190,79 @@ const initialTeachers = [
     presentAddress: 'Teacher Quarter, Nabiganj Govt. College, Habiganj',
     permanentAddress: 'Vill: Auskandi, Post: Auskandi, Nabiganj, Habiganj',
     mpoIndexNo: 'N901245',
-    joiningDate: '01 Mar, 2022',
+    joiningDate: '2022-03-01',
     experience: '3+ Years in ICT & Programming Education',
     interest: 'Algorithms, Web Development, Database Management Systems',
     phone: '+880 1711-000008',
     email: 'tanjim.ict@ngc.edu.bd',
     photoUrl: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=600&h=600&q=80',
-    bio: 'Chief IT advisor managing college computer lab network and digital literacy programs.',
     orderIndex: 8,
+  },
+];
+
+const initialGallery = [
+  {
+    title: 'Annual Prize Distribution & Merit Award Ceremony',
+    imageUrl: 'https://images.pexels.com/photos/8199562/pexels-photo-8199562.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
+    caption: 'Celebrating high academic achievers and board distinction holders with honorable guests and college faculty.',
+    category: 'Ceremony',
+    isFeatured: true,
+  },
+  {
+    title: 'District Science Fair & Student Innovation Projects',
+    imageUrl: 'https://images.pexels.com/photos/256395/pexels-photo-256395.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    caption: 'Science faculty students presenting renewable energy prototypes, solar setups, and automation models.',
+    category: 'Academic',
+    isFeatured: true,
+  },
+  {
+    title: 'Weekly Morning Assembly & Physical Discipline Drill',
+    imageUrl: 'https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    caption: 'Fostering discipline, punctuality, and fitness during assembly at the central college grounds.',
+    category: 'Campus',
+    isFeatured: true,
+  },
+  {
+    title: 'Serene Sunset View of Nabiganj College Academic Building',
+    imageUrl: 'https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    caption: 'The peaceful academic atmosphere of Nabiganj Government College campus at dusk.',
+    category: 'Campus',
+    isFeatured: true,
+  },
+  {
+    title: 'Faculty Reception & Welcome Ceremony for New Educators',
+    imageUrl: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    caption: 'Warm felicitations for newly posted BCS cadre professors and lecturers by the college administration.',
+    category: 'Faculty',
+    isFeatured: true,
+  },
+  {
+    title: 'Digital Skills & Computer Programming Workshop',
+    imageUrl: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    caption: 'Hands-on ICT workshop equipping students with modern web and software problem-solving skills.',
+    category: 'Workshop',
+    isFeatured: true,
+  },
+  {
+    title: 'Inter-Department Annual Football Championship Final',
+    imageUrl: 'https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
+    caption: 'Thrilling final match between Science and Business Studies departments at the college sports ground.',
+    category: 'Sports',
+    isFeatured: false,
+  },
+  {
+    title: 'Central Library Study & Academic Reference Counter',
+    imageUrl: 'https://images.pexels.com/photos/256455/pexels-photo-256455.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
+    caption: 'Students utilizing the extensive institutional collection of textbooks, research journals, and quiet study bays.',
+    category: 'Academic',
+    isFeatured: false,
+  },
+  {
+    title: 'Cultural Program & Observance of International Mother Language Day',
+    imageUrl: 'https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
+    caption: 'Poetry recitations, patriotic songs, and drama staged by college cultural club members in the auditorium.',
+    category: 'Cultural',
+    isFeatured: false,
   },
 ];
 
@@ -272,7 +330,7 @@ async function main() {
     }
   }
 
-  // 4. Sync Teachers with all rich details
+  // 4. Sync Teachers
   for (const t of initialTeachers) {
     const existingTeacher = await prisma.teacher.findFirst({
       where: { name: t.name, isDeleted: false },
@@ -299,15 +357,37 @@ async function main() {
           email: t.email,
           phone: t.phone,
           photoUrl: t.photoUrl,
-          bio: t.bio,
           orderIndex: t.orderIndex,
         },
       });
-      console.log(`✓ Updated faculty with full info: ${t.name}`);
+      console.log(`✓ Updated faculty: ${t.name}`);
     }
   }
 
-  console.log('✅ PostgreSQL database seeded with full realistic faculty and college info!');
+  // 5. Sync Gallery
+  for (const g of initialGallery) {
+    const existing = await prisma.galleryItem.findFirst({
+      where: { title: g.title, isDeleted: false },
+    });
+
+    if (!existing) {
+      await prisma.galleryItem.create({ data: g });
+      console.log(`+ Created gallery item: ${g.title}`);
+    } else {
+      await prisma.galleryItem.update({
+        where: { id: existing.id },
+        data: {
+          imageUrl: g.imageUrl,
+          caption: g.caption,
+          category: g.category,
+          isFeatured: g.isFeatured,
+        },
+      });
+      console.log(`✓ Updated gallery item: ${g.title}`);
+    }
+  }
+
+  console.log('✅ PostgreSQL database seeded with full realistic faculty, notices, and gallery info!');
 }
 
 main()
