@@ -131,7 +131,7 @@ model CollegeAbout {
   subheading      String   @default("Empowering generations through quality education, discipline, and integrity since 1984.")
   description1    String   @db.Text
   description2    String   @db.Text
-  videoEmbedUrl   String   @map("video_embed_url")
+  videoEmbedUrl   String   @db.Text @map("video_embed_url")
   videoThumbnail  String?  @map("video_thumbnail")
   missionText     String   @db.Text @map("mission_text")
   visionText      String   @db.Text @map("vision_text")
