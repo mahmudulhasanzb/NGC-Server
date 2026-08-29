@@ -66,19 +66,25 @@ model Notice {
 
 // 5. Teacher / Faculty Model
 model Teacher {
-  id            String   @id @default(uuid())
-  name          String
-  designation   String
-  department    String
-  qualification String
-  email         String?
-  phone         String?
-  photoUrl      String?  @map("photo_url")
-  bio           String?  @db.Text
-  orderIndex    Int      @default(0) @map("order_index")
-  isDeleted     Boolean  @default(false) @map("is_deleted")
-  createdAt     DateTime @default(now()) @map("created_at")
-  updatedAt     DateTime @updatedAt @map("updated_at")
+  id               String   @id @default(uuid())
+  name             String
+  designation      String
+  department       String
+  qualification    String
+  email            String?
+  phone            String?
+  photoUrl         String?  @map("photo_url")
+  bio              String?  @db.Text
+  presentAddress   String?  @map("present_address")
+  permanentAddress String?  @map("permanent_address")
+  mpoIndexNo       String?  @map("mpo_index_no")
+  joiningDate      String?  @map("joining_date")
+  experience       String?
+  interest         String?
+  orderIndex       Int      @default(0) @map("order_index")
+  isDeleted        Boolean  @default(false) @map("is_deleted")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
 
   @@index([department])
   @@index([isDeleted])

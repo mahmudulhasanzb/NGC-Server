@@ -7,10 +7,31 @@ const router = Router();
 // 1. CREATE Teacher
 router.post("/", async (req, res) => {
   try {
-    const { name, designation, department, qualification, email, phone, photoUrl, bio, orderIndex } = req.body;
+    const {
+      name,
+      designation,
+      department,
+      qualification,
+      email,
+      phone,
+      photoUrl,
+      bio,
+      presentAddress,
+      permanentAddress,
+      mpoIndexNo,
+      joiningDate,
+      experience,
+      interest,
+      orderIndex,
+    } = req.body;
 
     if (!name || !designation || !department || !qualification) {
-      return sendResponse(res, 400, false, "Name, designation, department, and qualification are required");
+      return sendResponse(
+        res,
+        400,
+        false,
+        "Name, designation, department, and qualification are required"
+      );
     }
 
     const teacher = await prisma.teacher.create({
@@ -23,6 +44,12 @@ router.post("/", async (req, res) => {
         phone: phone || null,
         photoUrl: photoUrl || null,
         bio: bio || null,
+        presentAddress: presentAddress || null,
+        permanentAddress: permanentAddress || null,
+        mpoIndexNo: mpoIndexNo || null,
+        joiningDate: joiningDate || null,
+        experience: experience || null,
+        interest: interest || null,
         orderIndex: Number(orderIndex) || 0,
       },
     });
@@ -48,14 +75,12 @@ router.get("/", async (req, res) => {
                 { name: { contains: String(search), mode: "insensitive" } },
                 { designation: { contains: String(search), mode: "insensitive" } },
                 { department: { contains: String(search), mode: "insensitive" } },
+                { qualification: { contains: String(search), mode: "insensitive" } },
               ],
             }
           : {}),
       },
-      orderBy: [
-        { orderIndex: "asc" },
-        { createdAt: "asc" },
-      ],
+      orderBy: [{ orderIndex: "asc" }, { createdAt: "asc" }],
     });
 
     sendResponse(res, 200, true, "Teachers retrieved successfully", teachers);
@@ -87,7 +112,23 @@ router.get("/:id", async (req, res) => {
 router.patch("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, designation, department, qualification, email, phone, photoUrl, bio, orderIndex } = req.body;
+    const {
+      name,
+      designation,
+      department,
+      qualification,
+      email,
+      phone,
+      photoUrl,
+      bio,
+      presentAddress,
+      permanentAddress,
+      mpoIndexNo,
+      joiningDate,
+      experience,
+      interest,
+      orderIndex,
+    } = req.body;
 
     const teacherExists = await prisma.teacher.findFirst({
       where: { id, isDeleted: false },
@@ -108,6 +149,12 @@ router.patch("/:id", async (req, res) => {
         ...(phone !== undefined && { phone }),
         ...(photoUrl !== undefined && { photoUrl }),
         ...(bio !== undefined && { bio }),
+        ...(presentAddress !== undefined && { presentAddress }),
+        ...(permanentAddress !== undefined && { permanentAddress }),
+        ...(mpoIndexNo !== undefined && { mpoIndexNo }),
+        ...(joiningDate !== undefined && { joiningDate }),
+        ...(experience !== undefined && { experience }),
+        ...(interest !== undefined && { interest }),
         ...(orderIndex !== undefined && { orderIndex: Number(orderIndex) }),
       },
     });
