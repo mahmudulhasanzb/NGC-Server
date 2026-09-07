@@ -5,6 +5,7 @@ import teachers from "../services/teachers";
 import gallery from "../services/gallery";
 import stats from "../services/stats";
 import about from "../services/about";
+import covers from "../services/covers";
 
 const router = Router();
 
@@ -15,5 +16,7 @@ router.use("/teachers", teachers);
 router.use("/gallery", gallery);
 router.use("/stats", stats);
 router.use("/about", about);
+router.use("/covers", covers);
 
 export default router;
+
